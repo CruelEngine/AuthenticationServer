@@ -1,11 +1,14 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-export default class App {
-  public app: any;
+import { Routes } from "./routes";
 
+export default class App {
+  public app: express.Application;
+  public routes: Routes = new Routes();
   constructor() {
     this.app = express();
+    this.routes.routes(this.app);
     this.config();
   }
 
