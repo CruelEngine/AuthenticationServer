@@ -1,0 +1,22 @@
+{
+  "name": "authenticationserver",
+  "version": "0.0.1",
+  "description": "Authentication Server using nodejs , jwt and mongoDB",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "CruelEngine",
+  "license": "ISC",
+  "dependencies": {
+    "jsonwebtoken": "^8.3.0",
+    "nodemon": "^1.18.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.24.0"
+  }
+}
