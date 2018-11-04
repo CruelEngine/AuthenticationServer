@@ -21,9 +21,16 @@ module.exports = {
   },
   module: {
     rules: [
-      //all files with .ts extention will be handled y ts-loader
-      { test: /\.ts$/, loader: "ts-loader" }
+      //all files with .ts extention will be handled by ts-loader
+      {
+        test: /\.ts$/,
+        include: path.resolve(__dirname, "src"),
+        use: "ts-loader"
+      }
     ]
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"]
   },
   target: "node",
   externals: nodeModules
