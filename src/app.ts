@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-import { Routes } from "./routes";
+import { Routes } from "./routes/routes";
 
 export default class App {
   public app: express.Application;

@@ -5,5 +5,9 @@ export class Routes {
     app.route("/").get((req: Request, res: Response) => {
       res.status(200).send("<h1>Hello world</h1>");
     });
+
+    app.route("/login").post((req: Request, res: Response) => {
+      res.status(200).send("<h1>Hello Login</h1>");
+    });
   }
 }
