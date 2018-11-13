@@ -21,5 +21,7 @@ export default class App {
 
     //add support for application/json type for data
     this.app.use(bodyParser.json());
+
+    this.app.use(express.static(__dirname + "/sample/"));
   }
 }

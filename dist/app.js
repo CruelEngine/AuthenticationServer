@@ -18,6 +18,7 @@ var App = (function () {
     App.prototype.config = function () {
         this.app.use(body_parser_1.default.urlencoded({ extended: false }));
         this.app.use(body_parser_1.default.json());
+        this.app.use(express_1.default.static(__dirname + "/sample/"));
     };
     return App;
 }());
