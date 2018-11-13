@@ -19,8 +19,9 @@ var Routes = (function () {
         app.route("/login").post(function (req, res) {
             res.status(200).send("<h1>Hello Login</h1>");
         });
-        app.route("/user").post(function (req, res) {
-            var user = JSON.parse(req.body);
+        app.route("/users").post(function (req, res) {
+            console.log(req.body);
+            var user = req.body;
             console.log(user);
             user_1.User.create(user, function (err, user) {
                 if (err) {

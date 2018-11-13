@@ -12,8 +12,9 @@ export class Routes {
       res.status(200).send("<h1>Hello Login</h1>");
     });
 
-    app.route("/user").post((req: Request, res: Response) => {
-      let user: IUserModel = JSON.parse(req.body);
+    app.route("/users").post((req: Request, res: Response) => {
+      console.log(req.body);
+      let user: IUserModel = req.body;
       console.log(user);
       User.create(user, (err: Errback, user: IUserModel) => {
         if (err) {
