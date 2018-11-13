@@ -11,7 +11,7 @@ export class TestService {
   constructor(private _http: HttpClient) {}
 
   getTest() {
-    let url = window.location.origin + "/users";
+    let url = window.location.origin + "/register";
     let body: object = {
       firstName: "abc1",
       lastName: "abc2",

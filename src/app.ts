@@ -4,15 +4,18 @@ import bodyParser from "body-parser";
 import { Routes } from "./routes/routes";
 import db from "./database/db";
 import Mongoose from "./database/db";
+import AuthenticationController from "./auth/AuthenticationController";
 
 export default class App {
   public app: express.Application;
   public routes: Routes = new Routes();
+  public authentication: AuthenticationController = new AuthenticationController();
   public db: Mongoose = new db();
   constructor() {
     this.app = express();
     this.config();
     this.routes.routes(this.app);
+    this.authentication.Authentication(this.app);
   }
 
   private config(): void {
