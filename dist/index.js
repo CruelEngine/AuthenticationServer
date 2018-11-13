@@ -10,4 +10,3 @@ console.log(app);
 app.listen(PORT, function () {
     console.log("Express Server is up and running");
 });
-//# sourceMappingURL=index.js.map
