@@ -1,38 +1,37 @@
-<!-- <div class="form-container"> -->
-<mat-card>
-  <form
-    class="form"
-    [formGroup]="loginForm"
-    (ngSubmit)="login(loginForm.value)"
-  >
-    <mat-form-field class="form-field">
-      <input
-        class="form-input"
-        matInput
-        type="email"
-        formControlName="email"
-        placeholder="Email"
-      />
-    </mat-form-field>
-    <mat-form-field class="form-field">
-      <input
-        class="form-input"
-        matInput
-        type="password"
-        formControlName="password"
-        placeholder="Password"
-      />
-    </mat-form-field>
-    <button
-      mat-raised-button
-      type="submit"
-      [disabled]="!loginForm.valid"
-      class="form-input__button"
-      color="primary"
+<div class="container">
+  <mat-card class="card">
+    <form
+      class="form"
+      [formGroup]="loginForm"
+      (ngSubmit)="login(loginForm.value)"
     >
-      Login
-    </button>
-  </form>
-</mat-card>
-
-<!-- </div>  -->
+      <mat-form-field class="form-field">
+        <input
+          class="form-input"
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input
+          class="form-input"
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+        />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="!loginForm.valid"
+        class="form-input__button"
+        color="primary"
+      >
+        Login
+      </button>
+    </form>
+  </mat-card>
+</div>
