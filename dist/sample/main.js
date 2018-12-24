@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button (click)=\"test()\">Test</button>\n"
+module.exports = "<button (click)=\"test()\">Test Register</button>\n<button (click)=\"testLogin()\">Test Login</button>\n"
 
 /***/ }),
 
@@ -75,6 +75,11 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.test = function () {
         this._testService.getTest().subscribe(function (res) {
+            console.log(res);
+        });
+    };
+    AppComponent.prototype.testLogin = function () {
+        this._testService.getTestLogin().subscribe(function (res) {
             console.log(res);
         });
     };
@@ -177,6 +182,20 @@ var TestService = /** @class */ (function () {
             "Content-Type": "application/json"
         });
         return this._http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return console.log(res); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
+    };
+    TestService.prototype.getTestLogin = function () {
+        var url = window.location.origin + "/login";
+        var body = {
+            email: "abc@gmail.com",
+            password: "abc123"
+        };
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+            "Content-Type": "application/json"
+        });
+        return this._http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) {
+            console.log(res);
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err); }));
     };
     TestService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

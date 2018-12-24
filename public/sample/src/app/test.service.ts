@@ -27,4 +27,23 @@ export class TestService {
       catchError(err => throwError(err))
     );
   }
+
+  getTestLogin() {
+    let url = window.location.origin + "/login";
+    let body: object = {
+      email: "abc@gmail.com",
+      password: "abc123"
+    };
+
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this._http.post(url, body, { headers: headers }).pipe(
+      map(res => {
+        console.log(res);
+        return res;
+      }),
+      catchError(err => throwError(err))
+    );
+  }
 }

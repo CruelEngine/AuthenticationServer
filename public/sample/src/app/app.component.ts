@@ -16,4 +16,10 @@ export class AppComponent {
       console.log(res);
     });
   }
+
+  testLogin() {
+    this._testService.getTestLogin().subscribe(res => {
+      console.log(res);
+    });
+  }
 }

@@ -17,14 +17,32 @@ var AuthenticationController = (function () {
             var hashedPassword = bcryptjs_1.default.hashSync(user.password, 8);
             user.password = hashedPassword;
             user_1.User.create(user, function (err, user) {
-                console.log(user);
                 if (err)
                     return res.status(500).send(Error_1.Error.REGISTRATION_ERROR);
                 var token = jsonwebtoken_1.default.sign({ id: user._id }, config_1.Secret.KEY);
                 res.status(200).json({
                     success: true,
-                    message: 'Auth Success',
+                    message: "Auth Success",
                     token: token
+                });
+            });
+        });
+        app.route("/login").post(function (req, res) {
+            var loginUser = req.body;
+            console.log(loginUser);
+            user_1.User.findOne({ email: loginUser.email }, function (err, user) {
+                bcryptjs_1.default.compare(loginUser.password, user.password, function (err, success) {
+                    if (success) {
+                        return res.status(200).json({
+                            success: true,
+                            message: "Authorised",
+                            token: jsonwebtoken_1.default.sign({ id: user._id }, config_1.Secret.KEY)
+                        });
+                    }
+                    return res.status(400).json({
+                        success: false,
+                        message: "Unauthorised"
+                    });
                 });
             });
         });
