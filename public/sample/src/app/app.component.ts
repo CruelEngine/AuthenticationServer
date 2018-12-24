@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { TestService } from "./test.service";
 
 @Component({
@@ -6,20 +6,18 @@ import { TestService } from "./test.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "sample";
+  navLinks: Array<{ path: string; isActive: boolean }> = [];
 
   constructor(private _testService: TestService) {}
 
-  test() {
-    this._testService.getTest().subscribe(res => {
-      console.log(res);
-    });
-  }
+  ngOnInit() {
+    let navLinks = [
+      { path: "/register", isActive: false, label: "Register" },
+      { path: "/login", isActive: false, label: "Login" }
+    ];
 
-  testLogin() {
-    this._testService.getTestLogin().subscribe(res => {
-      console.log(res);
-    });
+    this.navLinks = navLinks;
   }
 }

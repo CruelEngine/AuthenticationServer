@@ -1,3 +1,4 @@
+import { HttpResponseMessage } from "./../Response/http-response-message";
 import { ILogin } from "./../interfaces/login";
 import { IUserModel } from "./../schema/user";
 import { IUser } from "./../interfaces/user";
@@ -11,6 +12,8 @@ import { Secret } from "../jwt/config";
 
 export default class AuthenticationController {
   public Authentication(app: Application) {
+    let httpResponseMessage = new HttpResponseMessage();
+
     app.route("/register").post((req: Request, res: Response) => {
       let user: IUser = req.body;
       let hashedPassword = bcrypt.hashSync(user.password, 8);
@@ -19,11 +22,9 @@ export default class AuthenticationController {
       User.create(user, (err: Errback, user: IUserModel) => {
         if (err) return res.status(500).send(Error.REGISTRATION_ERROR);
         let token = jwt.sign({ id: user._id }, Secret.KEY);
-        res.status(200).json({
-          success: true,
-          message: "Auth Success",
-          token: token
-        });
+        res
+          .status(200)
+          .json(httpResponseMessage.tokenMessage(true, "Auth Success", token));
       });
     });
 
@@ -36,16 +37,21 @@ export default class AuthenticationController {
           user.password,
           (err: any, success: boolean) => {
             if (success) {
-              return res.status(200).json({
-                success: true,
-                message: "Authorised",
-                token: jwt.sign({ id: user._id }, Secret.KEY)
-              });
+              return res
+                .status(200)
+                .json(
+                  httpResponseMessage.tokenMessage(
+                    true,
+                    "Authorised",
+                    jwt.sign({ id: user._id }, Secret.KEY)
+                  )
+                );
             }
-            return res.status(400).json({
-              success: false,
-              message: "Unauthorised"
-            });
+            return res
+              .status(400)
+              .json(
+                httpResponseMessage.defaultMessage(false, "UnAuthorised Access")
+              );
           }
         );
       });
