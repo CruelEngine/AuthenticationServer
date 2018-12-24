@@ -11,8 +11,8 @@ export var UserSchema: Schema = new Schema({
   name: String,
   password: String
 });
-UserSchema.methods.fullName = function(): string {
-  return this.firstName.trim() + " " + this.lastName.trim();
-};
+// UserSchema.methods.fullName = function(): string {
+//   return this.firstName.trim() + " " + this.lastName.trim();
+// };
 
 export const User: Model<IUserModel> = model<IUserModel>("User", UserSchema);

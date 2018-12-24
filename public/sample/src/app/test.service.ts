@@ -13,9 +13,9 @@ export class TestService {
   getTest() {
     let url = window.location.origin + "/register";
     let body: object = {
-      firstName: "abc1",
-      lastName: "abc2",
-      email: "abc@gmail.com"
+      name: "abc1",
+      email: "abc@gmail.com",
+      password: "abc123"
     };
 
     let headers = new HttpHeaders({
@@ -23,6 +23,7 @@ export class TestService {
     });
     return this._http.post(url, body, { headers: headers }).pipe(
       map(res => console.log(res)),
+
       catchError(err => throwError(err))
     );
   }

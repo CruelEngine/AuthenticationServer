@@ -167,11 +167,11 @@ var TestService = /** @class */ (function () {
         this._http = _http;
     }
     TestService.prototype.getTest = function () {
-        var url = window.location.origin + "/users";
+        var url = window.location.origin + "/register";
         var body = {
-            firstName: "abc1",
-            lastName: "abc2",
-            email: "abc@gmail.com"
+            name: "abc1",
+            email: "abc@gmail.com",
+            password: "abc123"
         };
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             "Content-Type": "application/json"

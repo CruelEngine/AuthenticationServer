@@ -6,13 +6,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var user_1 = require("./../schema/user");
 var path = __importStar(require("path"));
+var AuthenticationController_1 = __importDefault(require("../auth/AuthenticationController"));
 var Routes = (function () {
     function Routes() {
+        this.authController = new AuthenticationController_1.default();
     }
     Routes.prototype.routes = function (app) {
+        this.authController.Authentication(app);
         app.route("/").get(function (req, res) {
             res.sendFile(path.join(__dirname, "../../dist/sample/index.html"));
         });

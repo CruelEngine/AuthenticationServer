@@ -1,9 +1,17 @@
 import { User, IUserModel } from "./../schema/user";
 import { Request, Response, Errback } from "express";
 import * as path from "path";
+import AuthenticationController from "../auth/AuthenticationController";
 
 export class Routes {
+  authController: AuthenticationController;
+  constructor() {
+    this.authController = new AuthenticationController();
+  }
+
   public routes(app: any): void {
+    this.authController.Authentication(app);
+
     app.route("/").get((req: Request, res: Response) => {
       res.sendFile(path.join(__dirname, "../../dist/sample/index.html"));
     });
