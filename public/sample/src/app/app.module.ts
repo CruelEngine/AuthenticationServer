@@ -13,7 +13,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatTabsModule
+  MatTabsModule,
+  MatCardModule
 } from "@angular/material";
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
